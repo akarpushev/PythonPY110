@@ -60,7 +60,7 @@
 адрес обернуть в кавычки.
 
 ```cmd
-curl "https://api.weatherapi.com/v1/current.json?key=b4588e45fcc14bdb89d63200232109&q=59.93,30.31"
+curl "https://api.weatherapi.com/v1/current.json?key=8038f934b45841a18c2154734230112&q=59.93,30.31"&q=59.93,30.31"
 ```
 
 ![3.png](pic_for_task/3.png)
@@ -74,7 +74,7 @@ curl: (35) schannel: next InitializeSecurityContext failed: Unknown error (0x800
 Добавление параметра `--insecure` в команду Curl позволит пропустить проверку сертификата SSL. Однако будьте осторожны при использовании этой опции, поскольку она делает ваше соединение менее безопасным.
 
 ```cmd
-curl --insecure "https://api.weatherapi.com/v1/current.json?key=b4588e45fcc14bdb89d63200232109&q=59.93,30.31"
+curl --insecure "https://api.weatherapi.com/v1/current.json?key=8038f934b45841a18c2154734230112&q=59.93,30.31"
 ```
 
 ##### *Создание запросов через модуль requests*
@@ -84,7 +84,7 @@ curl --insecure "https://api.weatherapi.com/v1/current.json?key=b4588e45fcc14bdb
 ```python
 import requests
 
-key = ""  # TODO подставить ваш ключ к API
+key = "8038f934b45841a18c2154734230112"  # TODO подставить ваш ключ к API
 lat = "59.93"  # широта в градусах
 lon = "30.31"  # долгота в градусах
 
