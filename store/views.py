@@ -1,12 +1,24 @@
 from django.shortcuts import render
 
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse, HttpResponseNotFound
 from .models import DATABASE
-
 
 def products_view(request):
     if request.method == "GET":
-        return JsonResponse(DATABASE, json_dumps_params={'ensure_ascii': False, 'indent': 4})
+        id = request.GET.get('id')
+        if id:
+            data = DATABASE[id]
+        else:
+            data = DATABASE
+
+        #elif id != id in DATABASE:
+         #   return HttpResponseNotFound("Данного продукта нет в базе данных")
+
+
+        #else:
+         #   data = DATABASE
+
+        return JsonResponse(data, json_dumps_params={'ensure_ascii': False, 'indent': 4})
 
 
 
@@ -14,7 +26,6 @@ def products_view(request):
         # как в приложении app_weather
 
 
-from django.http import HttpResponse
 
 def shop_view(request):
     if request.method == "GET":
