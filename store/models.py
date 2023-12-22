@@ -173,3 +173,7 @@ DATABASE = {'1': {'name': 'Болгарский перец',
                    'html': 'chilli'
                    },
             }
+# product_id = '1'
+# product = {}
+# product[product_id] = DATABASE[product_id]
+# print(product)

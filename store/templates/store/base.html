@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %} <!-- ÐÐ»Ð¾Ðº Ð´Ð»Ñ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ ÑÑÑÐ°Ð½Ð¸ÑÑ-->
+
+    {% endblock %}
+
+    {% block head %} <!-- ÐÐ»Ð¾Ðº ÑÑÑÐ»Ð¾Ðº Ð² head-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+
+	<link type="image/x-icon" href="{% static 'store/images/favicon.png' %}" rel="shortcut icon">
+    <link rel="stylesheet" href="{% static 'store/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'store/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'store/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'store/css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'store/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/jquery.timepicker.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'store/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+    {% endblock %}
+</head>
+<body class="goto-here">
+    {% block header %} <!-- ÐÐ»Ð¾Ðº Ð´Ð»Ñ header ÑÑÑÐ°Ð½Ð¸ÑÑ Ñ Ð´Ð°Ð½Ð½ÑÐ¼Ð¸ Ð¼Ð°Ð³Ð°Ð·Ð¸Ð½Ð°-->
+    <div class="py-1 bg-primary">
+		<div class="container">
+    		<div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+	    		<div class="col-lg-12 d-block">
+		    		<div class="row d-flex">
+		    			<div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+						    <span class="text">+ 7 (812) 123 45 678</span>
+					    </div>
+					    <div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+						    <span class="text">mystore@email.ru</span>
+					    </div>
+					    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
+						    <span class="text">Доставка в течении 3-5 рабочих дней. Бесплатный возврат</span>
+					    </div>
+				    </div>
+			    </div>
+		    </div>
+		  </div>
+    </div>
+    {% endblock %}
+
+    {% block nav %} <!-- ÐÐ»Ð¾Ðº Ð´Ð»Ñ Ð½Ð°Ð²Ð¸Ð³Ð°ÑÐ¸Ð¾Ð½Ð½Ð¾Ð¹ Ð¿Ð°Ð½ÐµÐ»Ð¸ ÑÑÑÐ°Ð½Ð¸ÑÑ Ð¼Ð°Ð³Ð°Ð·Ð¸Ð½Ð°-->
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="#">Vegefoods</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Навигация
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item"><a href="shop.html" class="nav-link">Магазин</a>
+			  <li class="nav-item"><a href="wishlist.html" class="nav-link">Избранное</a>
+			  <li class="nav-item"><a href="cart.html" class="nav-link">Корзина</a>
+			  <li class="nav-item"><a href="login.html" class="nav-link">Войти в аккаунт</a>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    {% endblock %}
+
+    {% block content %} <!-- ÐÐ»Ð¾Ðº Ð´Ð»Ñ ÑÐ½Ð¸ÐºÐ°Ð»ÑÐ½Ð¾Ð³Ð¾ ÑÐ¾Ð´ÐµÑÐ¶Ð¸Ð¼Ð¾Ð³Ð¾ ÑÑÑÐ°Ð½Ð¸ÑÑ-->
+
+    {% endblock %}
+
+    {% block news %} <!-- ÐÐ»Ð¾Ðº Ð´Ð»Ñ Ð½Ð¾Ð²Ð¾ÑÑÐ½Ð¾Ð¹ Ð¿Ð°Ð½ÐµÐ»Ð¸-->
+
+    {% endblock %}
+
+    {% block footer %} <!-- ÐÐ»Ð¾Ðº Ð´Ð»Ñ Ð½Ð¸Ð¶Ð½ÐµÐ¹ Ð¿Ð°Ð½ÐµÐ»Ð¸ ÑÑÑÐ°Ð½Ð¸ÑÑ-->
+
+    {% endblock %}
+
+    {% block scripts %} <!-- ÐÐ»Ð¾Ðº Ð´Ð»Ñ Ð·Ð°Ð³ÑÑÐ·ÐºÐ¸ javascript ÑÑÑÐ°Ð½Ð¸ÑÑ-->
+
+    {% endblock %}
+
+    {% block custom_scripts %}  <!-- ÐÐ»Ð¾Ðº Ð´Ð»Ñ Ð·Ð°Ð³ÑÑÐ·ÐºÐ¸ Ð´Ð¾Ð¿Ð¾Ð»Ð½Ð¸ÑÐµÐ»ÑÐ½Ð¾Ð³Ð¾ ÐºÐ¾Ð´Ð° Ð²ÑÑÑÐ¾ÐµÐ½Ð½Ð¾Ð³Ð¾ Ð² html-->
+
+    {% endblock %}
+</body>
+</html>
