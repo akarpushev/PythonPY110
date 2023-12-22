@@ -3,6 +3,7 @@ from logic.services import view_in_cart, add_to_cart, remove_from_cart
 from django.http import JsonResponse, HttpResponse, HttpResponseNotFound
 from .models import DATABASE
 from logic.services import filtering_category
+from django.shortcuts import render
 
 def products_view(request):
     if request.method == "GET":
@@ -10,9 +11,9 @@ def products_view(request):
             if data := DATABASE.get(id_product):
                 return JsonResponse(data, json_dumps_params={'ensure_ascii': False, 'indent': 4})
             return HttpResponseNotFound("Данного продукта нет в базе данных")
-        # else:
-        #     data = DATABASE
-        #     return JsonResponse(data, json_dumps_params={'ensure_ascii': False, 'indent': 4})
+        #else:
+        #    data = DATABASE
+        #    return JsonResponse(data, json_dumps_params={'ensure_ascii': False, 'indent': 4})
         category_key = request.GET.get("category")  # Считали 'category'
         if ordering_key := request.GET.get("ordering"):  # Если в параметрах есть 'ordering'
             if request.GET.get("reverse") in ('true', 'True'):  # Если в параметрах есть 'ordering' и 'reverse'=True
@@ -39,11 +40,16 @@ def products_page_view(request, page):
                 return HttpResponse(data)
         return HttpResponse(status=404)
 
+# старый вариант
+# def shop_view(request):
+#     if request.method == "GET":
+#         with open('store/shop.html', encoding="utf-8") as f:
+#             data = f.read()  # Читаем HTML файл
+#         return HttpResponse(data)  # Отправляем HTML файл как ответ
+
 def shop_view(request):
     if request.method == "GET":
-        with open('store/shop.html', encoding="utf-8") as f:
-            data = f.read()  # Читаем HTML файл
-        return HttpResponse(data)  # Отправляем HTML файл как ответ
+        return render(request, 'store/shop.html')
 
 def cart_view(request):
     if request.method == "GET":
