@@ -46,6 +46,7 @@ urlpatterns = [
     #path('', shop_view),
     path('', include('store.urls')),
     #path('wiki/', func),
+    path('login/', include('app_login.urls')),
 ]
 
 
