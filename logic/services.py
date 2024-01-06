@@ -1,6 +1,7 @@
 import json
 import os
 from store.models import DATABASE
+from django.contrib.auth import get_user
 
 def filtering_category(database: dict,
                        category_key: [int, str] = None,
@@ -37,17 +38,21 @@ def filtering_category(database: dict,
 #
 #     print(filtering_category(DATABASE, 'Фрукты', 'price_after', True) == test)  # True
 
-def view_in_cart() -> dict:
+def view_in_cart(request) -> dict:
     if os.path.exists('cart.json'):  # Если файл существует
         with open('cart.json', encoding='utf-8') as f:
             return json.load(f)
-    cart = {'products': {}}  # Создаём пустую корзину
+    #cart = {'products': {}}  # Создаём пустую корзину
+    user = get_user(request).username
+    cart = {user: {'products': {}}}
     with open('cart.json', mode='x', encoding='utf-8') as f:   # Создаём файл и записываем туда пустую корзину
         json.dump(cart, f)
     return cart
 
-def add_to_cart(id_product: str):
-    cart = view_in_cart()
+def add_to_cart(request, id_product: str):
+    #cart = view_in_cart()
+    cart_users = view_in_cart(request)
+    cart = cart_users[get_user(request).username]
     if id_product in cart["products"]:
         if id_product in DATABASE.keys():
             cart['products'][id_product] += 1
@@ -55,15 +60,19 @@ def add_to_cart(id_product: str):
         if id_product in DATABASE.keys():
             cart['products'][id_product] = 1
     with open('cart.json', mode='w', encoding='utf-8') as f:
-         json.dump(cart, f)
+         #json.dump(cart, f)
+        json.dump(cart_users, f)
     return True
 
-def remove_from_cart(id_product: str) -> bool:
-    cart = view_in_cart()
+def remove_from_cart(request, id_product: str) -> bool:
+    #cart = view_in_cart()
+    cart_users = view_in_cart(request)
+    cart = cart_users[get_user(request).username]
     if id_product in cart["products"]:
         del cart['products'][id_product]
         with open('cart.json', mode='w', encoding='utf-8') as f:
-            json.dump(cart, f)
+            #json.dump(cart, f)
+            json.dump(cart_users, f)
     else:
         return False
     return True
@@ -82,3 +91,18 @@ if __name__ == "__main__":
     print(view_in_cart())  # {'products': {'2': 1}}
 
     # Предыдущий код, что был для проверки filtering_category закомментируйте
+
+def add_user_to_cart(request, username: str) -> None:
+    """
+    Добавляет пользователя в базу данных корзины, если его там не было.
+
+    :param username: Имя пользователя
+    :return: None
+    """
+    cart_users = view_in_cart(request)  # Чтение всей базы корзин
+    cart = cart_users.get(username)  # Получение корзины конкретного пользователя
+
+    if not cart:  # Если пользователя до настоящего момента не было в корзине, то создаём его и записываем в базу
+        with open('cart.json', mode='w', encoding='utf-8') as f:
+            cart_users[username] = {'products': {}}
+            json.dump(cart_users, f)
