@@ -47,6 +47,7 @@ urlpatterns = [
     path('', include('store.urls')),
     #path('wiki/', func),
     path('login/', include('app_login.urls')),
+    path('wishlist/', include('wishlist.urls')),
 ]
 
 
