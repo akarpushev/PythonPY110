@@ -35,20 +35,18 @@
 						    <tbody>
 							  {% for product in products %}
 						      <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+						        <td class="product-remove"><a href="{% url 'wishlist:remove_now' product.id %}"><span class="ion-ios-close"></span></a></td>
 
 						        <td class="image-prod"><a href="products/bell_pepper.html">
 									<div class="img" style="background-image:url({% static 'store/images/product-1.jpg' %});"></div>
 								</a></td>
 						        
 						        <td class="product-name">
-						        	<h3>Болгарский перец</h3>
-						        	<p>Сочный и яркий, он добавит красок и вкуса в ваши блюда.</p>
+						        	<h3>{{product.name}}</h3>
+						        	<p>{{product.description}}</p>
 						        </td>
-						        {% if product.discount %}
 						        <td class="price"><del>300.00</del> 210.00</td>
-								{% endif %}
-						      </tr><!-- END TR-->
+							  </tr><!-- END TR-->
 							  {% endfor %}
 
 						      <tr class="text-center">
@@ -67,7 +65,7 @@
 						      </tr><!-- END TR-->
 
 						      <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+						        <td class="product-remove"><a href="{% url 'wishlist:remove_from_wishlist_now' product.id %}"><span class="ion-ios-close"></span></a></td>
 						        
 						        <td class="image-prod"><a href="products/green_beans.html">
 									<div class="img" style="background-image: url({% static 'store/images/product-3.jpg' %});"></div>

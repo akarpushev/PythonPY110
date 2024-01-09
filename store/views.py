@@ -1,10 +1,8 @@
-from django.shortcuts import render
 from logic.services import view_in_cart, add_to_cart, remove_from_cart
 from django.http import JsonResponse, HttpResponse, HttpResponseNotFound
 from .models import DATABASE
 from logic.services import filtering_category
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth import get_user
 from django.contrib.auth.decorators import login_required
 
@@ -164,5 +162,4 @@ def cart_remove_view(request, id_product):
         result = remove_from_cart(request, id_product)  # TODO Вызвать функцию удаления из корзины
         if result:
             return redirect("store:cart_view")  # TODO Вернуть перенаправление на корзину
-
         return HttpResponseNotFound("Неудачное удаление из корзины")

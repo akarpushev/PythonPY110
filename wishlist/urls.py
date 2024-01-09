@@ -1,12 +1,14 @@
 from django.urls import path
 
-from .views import wishlist_view, wishlist_add_json, wishlist_del_json, wishlist_json
+from .views import wishlist_view, wishlist_add_json, wishlist_del_json, wishlist_json,\
+    wishlist_remove_view
 
 app_name = 'wishlist'
 
 urlpatterns = [
     path('', wishlist_view, name='wishlist'),
-    path('wishlist/api/add/', wishlist_add_json),
-    path('wishlist/api/del/', wishlist_del_json),
-    path('wishlist/api/', wishlist_json),
+    path('api/add/<str:id_product>', wishlist_add_json),
+    path('api/del/<str:id_product>', wishlist_del_json),
+    path('api/', wishlist_json),
+    path('wishlist/remove/<str:id_product>', wishlist_remove_view, name="remove_from_wishlist_now"),
 ]
