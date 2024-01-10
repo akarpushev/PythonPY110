@@ -122,15 +122,17 @@ def view_in_wishlist(request) -> dict:
 def add_to_wishlist(request, id_product: str):
     wishlist_users = view_in_wishlist(request)
     wishlist = wishlist_users[get_user(request).username]
-    if id_product in wishlist["products"]:
+    if id_product not in wishlist["products"]:
         if id_product in DATABASE.keys():
-            wishlist['products'][id_product] += 1
-    else:
-        if id_product in DATABASE.keys():
-            wishlist['products'][id_product] = 1
-    with open('wishlist.json', mode='w', encoding='utf-8') as f:
-        json.dump(wishlist_users, f)
-    return True
+            wishlist['products'].append(id_product)
+            with open('wishlist.json', mode='w', encoding='utf-8') as f:
+                json.dump(wishlist_users, f)
+            return True
+
+    # else:
+    #     if id_product in DATABASE.keys():
+    #         wishlist['products'][id_product] = 1
+
 
 def remove_from_wishlist(request, id_product: str) -> bool:
     wishlist_users = view_in_wishlist(request)
