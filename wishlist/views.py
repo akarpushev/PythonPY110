@@ -13,9 +13,9 @@ def wishlist_view(request):
         current_user = get_user(request).username
         data = view_in_wishlist(request)[current_user]
         products = []
-        for product_id, description in data['products']:
+        # products = [product_id for product_id in data['products']]
+        for product_id in data['products']:
             product = DATABASE[product_id]
-            product["description"] = description
             products.append(product)
         return render(request, 'wishlist/wishlist.html', context={"products": products})
 
@@ -75,5 +75,5 @@ def wishlist_remove_view(request, id_product):
     if request.method == "GET":
         result = remove_from_wishlist(request, id_product)
         if result:
-            return redirect("wishlist:wishlist_view")
+            return redirect("wishlist:wishlist")
         return HttpResponseNotFound("Неудачное удаление из избранного")
