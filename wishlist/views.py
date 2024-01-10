@@ -7,16 +7,15 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseNotFound
 
 
-
 @login_required(login_url='login:login_view')
 def wishlist_view(request):
     if request.method == "GET":
         current_user = get_user(request).username
         data = view_in_wishlist(request)[current_user]
         products = []
-        for product_id, characteristic in data['products']:
+        for product_id, description in data['products']:
             product = DATABASE[product_id]
-            product["characteristic"] = characteristic
+            product["description"] = description
             products.append(product)
         return render(request, 'wishlist/wishlist.html', context={"products": products})
 
